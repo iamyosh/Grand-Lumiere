@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Grand Lumière</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+
+
+
+
+
+<script type="module">
+
+   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+      import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+      import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-functions.js';
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAacaHmJ9u9VOkyqo6sditvfh4X-rijWtU",
+  authDomain: "grand-lumiere.firebaseapp.com",
+  projectId: "grand-lumiere",
+  storageBucket: "grand-lumiere.firebasestorage.app",
+  messagingSenderId: "417218970731",
+  appId: "1:417218970731:web:c98ce6b18874fa5bd05d2e",
+  measurementId: "G-2D9RHPGW51"
+  };
+
+  // Initialize Firebase App using the global 'firebase' object
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+  const functionsInstance = getFunctions(app); // Use a distinct name like functionsInstance
+
+
+ window.firebaseApp = app;
+      window.firebaseDb = db; 
+      window.firebaseFunctionsInstance = functionsInstance;
+
+      window.firebaseDoc = doc; 
+      window.firebaseGetDoc = getDoc; 
+      window.firebaseHttpsCallable = httpsCallable;
+
+
+
+  console.log("Firebase SDK loaded and initialized globally.");
+
+</script>
+
+    <script type="module" src="./booking1.js"></script>
+
+
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/Black_and_Gold_Elegant_Luxury_Flower_Jewelry_Logo-removebg-preview.png" alt="logo" />
+            <h2>Grand Lumière</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="nowshowingm.html">Movies</a></li>
+            <li><a href="index.html#offersection">Offers/Discounts</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+        <div class="nav-buttons">
+        <a href="nowshowingm.html"> <button class="book-button">Book a Show</button></a>
+        <a href="login.html"><button class="login-button" id="loginBtn">Login</button></a>
+        <span id="usernameDisplay" style="display: none;"></span>
+    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="parentmoca">
+    <div class="bmovie-card" style="background-image: url('images/boomo1.png');">
+    <div class="boverlay">
+      <div class="btitle" id="movie-title">MISSION IMPOSSIBLE :<br>DEAD RECKONING</div>
+      <div class="mdescon">
+      <div class="bdescription">
+        Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.
+      </div>
+      <div class="bcredits">
+        <div><span>Director:</span> James Cameron</div>
+        <div><span>Writers:</span>James Cameron, Ricj Jaffa, Amanda Silver</div>
+      </div>
+      <div class="brating">
+        <i class="bfas fa-star"></i>
+        <span>7.5 / 10</span>
+        <span>[ 533K ]</span>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+   
+
+   <div class="showtimes-container">
+  <div  class="showtimes-label" id="showtime-details">SHOW TIMES</div >
+  <button  class="showtime">10.45</button >
+  <button  class="showtime">13.30</button >
+  <button  class="showtime">16.45</button >
+  <button  class="showtime">19.00</button >
+</div>
+
+<br><br><br><br>
+
+<div class="seatbooking-container">
+     <div class="bookingheader"><p>VIP LONGUE</p></div>
+     <div class="Bookinggoldline"></div>
+
+<br><br>
+  <div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL1">
+    <span class="checkbox-box">VL1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL2">
+    <span class="checkbox-box">VL2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL3">
+    <span class="checkbox-box">VL3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL4">
+    <span class="checkbox-box">VL4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL5">
+    <span class="checkbox-box">VL5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL6">
+    <span class="checkbox-box">VL6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL7">
+    <span class="checkbox-box">VL7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="VL8">
+    <span class="checkbox-box">VL8</span>
+   </label>
+    </div>
+   
+<br><br>
+
+<div class="bookingheader"><p>STANDARD</p></div>
+<div class="Bookinggoldline"></div><BR><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H1">
+    <span class="checkbox-box">H1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H2">
+    <span class="checkbox-box">H2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H3">
+    <span class="checkbox-box">H3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H4">
+    <span class="checkbox-box">H4</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H5">
+    <span class="checkbox-box">H5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H6">
+    <span class="checkbox-box">H6</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H7">
+    <span class="checkbox-box">H7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H8">
+    <span class="checkbox-box">H8</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H9">
+    <span class="checkbox-box">H9</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H10">
+    <span class="checkbox-box">H10</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H11">
+    <span class="checkbox-box">H11</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="H12">
+    <span class="checkbox-box">H12</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G1">
+    <span class="checkbox-box">G1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G2">
+    <span class="checkbox-box">G2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G3">
+    <span class="checkbox-box">G3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G4">
+    <span class="checkbox-box">G4</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G5">
+    <span class="checkbox-box">G5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G6">
+    <span class="checkbox-box">G6</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G7">
+    <span class="checkbox-box">G7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G8">
+    <span class="checkbox-box">G8</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G9">
+    <span class="checkbox-box">G9</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G10"> 
+    <span class="checkbox-box">G10</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G11">
+    <span class="checkbox-box">G11</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="G12">
+    <span class="checkbox-box">G12</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F1">
+    <span class="checkbox-box">F1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F2">
+    <span class="checkbox-box">F2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F3">
+    <span class="checkbox-box">F3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F4">
+    <span class="checkbox-box">F4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F5">
+    <span class="checkbox-box">F5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F6">
+    <span class="checkbox-box">F6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F7">
+    <span class="checkbox-box">F7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="F8">
+    <span class="checkbox-box">F8</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E1">
+    <span class="checkbox-box">E1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E2">
+    <span class="checkbox-box">E2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E3">
+    <span class="checkbox-box">E3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E4">
+    <span class="checkbox-box">E4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E5">
+    <span class="checkbox-box">E5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E6">
+    <span class="checkbox-box">E6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E7">
+    <span class="checkbox-box">E7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="E8">
+    <span class="checkbox-box">E8</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D1">
+    <span class="checkbox-box">D1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D2">
+    <span class="checkbox-box">D2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D3">
+    <span class="checkbox-box">D3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D4">
+    <span class="checkbox-box">D4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D5">
+    <span class="checkbox-box">D5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D6">
+    <span class="checkbox-box">D6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D7">
+    <span class="checkbox-box">D7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="D8">
+    <span class="checkbox-box">D8</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C1">
+    <span class="checkbox-box">C1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C2">
+    <span class="checkbox-box">C2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C3">
+    <span class="checkbox-box">C3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C4">
+    <span class="checkbox-box">C4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C5">
+    <span class="checkbox-box">C5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C6">
+    <span class="checkbox-box">C6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C7">
+    <span class="checkbox-box">C7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="C8">
+    <span class="checkbox-box">C8</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B1">
+    <span class="checkbox-box">B1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B2">
+    <span class="checkbox-box">B2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B3">
+    <span class="checkbox-box">B3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B4">
+    <span class="checkbox-box">B4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B5">
+    <span class="checkbox-box">B5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B6">
+    <span class="checkbox-box">B6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B7">
+    <span class="checkbox-box">B7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="B8">
+    <span class="checkbox-box">B8</span>
+   </label>
+</div><BR>
+
+<div class="seatselector-container">
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A1">
+    <span class="checkbox-box">A1</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A2">
+    <span class="checkbox-box">A2</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A3">
+    <span class="checkbox-box">A3</span>
+   </label>
+   <label class="cyberpunk-checkbox-label" style="margin-right: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A4">
+    <span class="checkbox-box">A4</span>
+   </label>
+
+   <label class="cyberpunk-checkbox-label" style="margin-left: 30px;">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A5">
+    <span class="checkbox-box">A5</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A6">
+    <span class="checkbox-box">A6</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A7">
+    <span class="checkbox-box">A7</span>
+   </label>
+   <label class="cyberpunk-checkbox-label">
+    <input type="checkbox" class="cyberpunk-checkbox" data-seat-name="A8">
+    <span class="checkbox-box">A8</span>
+   </label>
+</div><BR><BR><BR><BR><BR>
+
+<div class="movie-screen-arc">
+    <P>SCREEN</P>
+</div>
+
+<div class="booking-footer">
+  <div class="seat-legend">
+    <div class="legend-item">
+      <span class="legend-box selected"></span>
+      <span>Selected</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-box unavailable"></span>
+      <span>Unavailable</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-box reserved"></span>
+      <span>Reserved</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-box available"></span>
+      <span>Available</span>
+    </div>
+  </div>
+</div>
+
+<div class="booking-actions">
+    <button class="bookingcancel-btn">Cancel</button>
+    <a href="confirmbooking.html" id="proceed-link"><button class="bookingconfirm-btn">Confirm Booking</button></a>
+</div>
+
+<BR><BR><BR>
+
+</div>
+<BR><BR><BR><BR><BR><BR>    
+
+<footer>
+    <div class="section-one">
+            <p>QUICK LINKS</p>
+            <ul>
+                <li>HOME</li>
+                <li>MOVIES</li>
+                <li>OFFERS & SERVICES</li>
+                <li>EVENTS</li>
+            </ul>
+        </div>
+
+        <div class="section-two">
+            <p>SUPPORT</p>
+            <ul>
+            <li>ABOUT US</li>
+            <li>CONTACT US</li>
+            <li>TERMS & CONDITIONS</li>
+            </ul>
+    </div>
+    <div class="subscription">
+            <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+            <input type="text" id="text" name="text" placeholder="Enter your Email">
+            <h4 class="social-media">FIND US ON:</h4>
+
+            <div class="parent">
+  <a href="https://facebook.com" target="_blank" class="child">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com" target="_blank" class="child">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://instagram.com" target="_blank" class="child">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com" target="_blank" class="child">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+            <br>
+        </div><br><br><br><br>
+        <div class="footer-bottom">
+            <p>© 2025 GRAND LUMIERE. All rights reserved</p>
+        </div>
+    </footer>
+
+
+
+
+</body>
+</html>    

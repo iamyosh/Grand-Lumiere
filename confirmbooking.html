@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Grand Lumière</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<script type="module">
+
+   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+      import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+      import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-functions.js';
+      // Import other services here if you need them (e.g., Auth)
+      // import { getAuth } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+
+
+  // Initialize Firebase *using the global firebase object*
+  // PASTE your actual Firebase config object here (from Firebase console)
+  const firebaseConfig = {
+    apiKey: "AIzaSyAacaHmJ9u9VOkyqo6sditvfh4X-rijWtU",
+  authDomain: "grand-lumiere.firebaseapp.com",
+  projectId: "grand-lumiere",
+  storageBucket: "grand-lumiere.firebasestorage.app",
+  messagingSenderId: "417218970731",
+  appId: "1:417218970731:web:c98ce6b18874fa5bd05d2e",
+  measurementId: "G-2D9RHPGW51"
+  };
+
+  // Initialize Firebase App using the global 'firebase' object
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+  const functionsInstance = getFunctions(app); // Use a distinct name like functionsInstance
+      // If using Auth: const auth = getAuth(app);
+
+
+ window.firebaseApp = app; // The initialized app instance
+      window.firebaseDb = db; // The Firestore service instance
+      window.firebaseFunctionsInstance = functionsInstance; // The Functions service instance
+
+      // Also expose the functions needed like doc(), getDoc(), httpsCallable()
+      window.firebaseDoc = doc; // The doc() function from Firestore
+      window.firebaseGetDoc = getDoc; // The getDoc() function from Firestore
+      window.firebaseHttpsCallable = httpsCallable; // The httpsCallable() function from Functions
+      // If using Auth: window.firebaseGetAuth = getAuth; window.firebaseAuth = auth; etc.
+
+
+
+  console.log("Firebase SDK loaded and initialized globally.");
+
+</script>
+
+    <script type="module" src="./confirmbooking.js"></script>
+
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/Black_and_Gold_Elegant_Luxury_Flower_Jewelry_Logo-removebg-preview.png" alt="logo" />
+            <h2>Grand Lumière</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="nowshowingm.html">Movies</a></li>
+            <li><a href="#offersection">Offers/Discounts</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+        <div class="nav-buttons">
+        <a href="nowshowingm.html"> <button class="book-button">Book a Show</button></a>
+        <a href="login.html"><button class="login-button" id="loginBtn">Login</button></a>
+        <span id="usernameDisplay" style="display: none;"></span>
+    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!--<section class="hero">
+    <div class="hero-content">
+      <div class="hero-button">
+        <button class="herobtn">Try It Now</button>
+      </div>
+    </div>
+    </section>-->
+
+<div class="bookingcontainer-wrapper">    
+<div class="bookingconfirmcontainer">
+    <div class="left">
+      <h2>RESERVATION DETAILS</h2><br>
+      <!-- From Uiverse.io by alexruix --> 
+    <div class="form__group field">
+    <input required="" placeholder="Name" class="form__field" type="input" id="customer-name">
+    <label class="form__label" for="customer-name">NAME</label>
+    </div><br><br>
+
+    <div class="form__group field">
+    <input required="" placeholder="Mobile" class="form__field" type="input" id="customer-mobile">
+    <label class="form__label" for="customer-mobile">MOBILE</label>
+    </div><br><br>
+
+    <div class="form__group field">
+    <input required="" placeholder="Email" class="form__field" type="input" id="customer-email">
+    <label class="form__label" for="customer-email">EMAIL</label>
+    </div>  
+     
+
+     <br><br><br>
+      <button class="login-button" style="border-radius: 20px;" id="final-confirm-button">CONFIRM</button>
+    </div>
+
+
+    <div class="right">
+      <h2>PURCHASE SUMMARY</h2>
+      <div class="summary-row">
+          <span>NO OF TICKETS</span>
+          <span class="summary-value" id="num-tickets">0</span>
+      </div>
+
+      <div class="summary-row">
+          <span>AMOUNT TO PAY</span>
+          <span class="summary-value" id="subtotal-amount">0</span>
+      </div>
+
+      <div class="summary-row">
+          <span>VAT AMOUNT</span>
+          <span class="summary-value" id="vat-amount">0</span>
+      </div>
+
+      <div class="summary-row">
+          <span>TOTAL AMOUNT</span>
+          <span class="summary-value" id="total-amount">0</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  <br><br><br><br><br>
+  
+  <!--<hr class="footer-divider">-->
+
+  <footer>
+    <div class="section-one">
+            <p>QUICK LINKS</p>
+            <ul>
+                <li>HOME</li>
+                <li>MOVIES</li>
+                <li>OFFERS & SERVICES</li>
+                <li>EVENTS</li>
+            </ul>
+        </div>
+
+        <div class="section-two">
+            <p>SUPPORT</p>
+            <ul>
+            <li>ABOUT US</li>
+            <li>CONTACT US</li>
+            <li>TERMS & CONDITIONS</li>
+            </ul>
+    </div>
+    <div class="subscription">
+            <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+            <input type="text" id="text" name="text" placeholder="Enter your Email">
+            <h4 class="social-media">FIND US ON:</h4>
+
+            <div class="parent">
+  <a href="https://facebook.com" target="_blank" class="child">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com" target="_blank" class="child">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://instagram.com" target="_blank" class="child">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com" target="_blank" class="child">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+            <br>
+        </div><br><br><br><br>
+        <div class="footer-bottom">
+            <p>© 2025 GRAND LUMIERE. All rights reserved</p>
+        </div>
+    </footer>
+    
+
+
+</body>
+</html>

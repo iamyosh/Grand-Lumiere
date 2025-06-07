@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contactus.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/Black_and_Gold_Elegant_Luxury_Flower_Jewelry_Logo-removebg-preview.png" alt="logo" />
+            <h2>Grand Lumière</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="nowshowingm.html">Movies</a></li>
+            <li><a href="index.html#offersection">Offers/Discounts</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+        <div class="nav-buttons">
+        <a href="nowshowingm.html"> <button class="book-button">Book a Show</button></a>
+        <a href="login.html"><button class="login-button" id="loginBtn">Login</button></a>
+        <span id="usernameDisplay" style="display: none;"></span>
+    </div>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-left">
+
+            <h2 class="section-title">CONTACT US</h2>
+            <hr class="section-divider">
+
+            <div class="info-block">
+                <i class="fas fa-map-marker-alt"></i>
+                <strong class="info-title">LOCATION</strong><br />
+                A 023, Union Place, Colombo
+            </div>
+
+            <div class="info-block">
+                <i class="fas fa-envelope"></i>
+                <strong class="info-title">EMAIL</strong><br />
+                watchgrandlumiere@gmail.com
+            </div>
+
+            <div class="info-block">
+                <i class="fas fa-phone"></i>
+                <strong class="info-title">PHONE</strong><br /> 
+                011 435 5637 / 011 666 1232
+            </div>
+        </div>
+
+        <div class="contact-right">
+            <h2 class="section-title">GET IN TOUCH</h2>
+            <hr class="section-divider">
+
+            <form id="contactForm" submit="handleSubmit(event)">
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" name="email" placeholder="Enter email" required />
+
+                <label for="message">MESSAGE</label>
+                <textarea id="message" rows="5" placeholder="Your message here" required></textarea>
+                <button class="login-button" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+    <div class="section-one">
+            <p>QUICK LINKS</p>
+            <ul>
+                <li>HOME</li>
+                <li>MOVIES</li>
+                <li>OFFERS & SERVICES</li>
+                <li>EVENTS</li>
+            </ul>
+        </div>
+
+        <div class="section-two">
+            <p>SUPPORT</p>
+            <ul>
+            <li>ABOUT US</li>
+            <li>CONTACT US</li>
+            <li>TERMS & CONDITIONS</li>
+            </ul>
+    </div>
+    <div class="subscription">
+            <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+            <input type="text" id="text" name="text" placeholder="Enter your Email">
+            <h4 class="social-media">FIND US ON:</h4>
+
+            <div class="parent">
+  <a href="https://facebook.com" target="_blank" class="child">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com" target="_blank" class="child">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://instagram.com" target="_blank" class="child">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com" target="_blank" class="child">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+            <br>
+        </div><br><br><br><br>
+        <div class="footer-bottom">
+            <p>© 2025 GRAND LUMIERE. All rights reserved</p>
+        </div>
+    </footer>
+
+        <script src="contactus.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grand Lumière - Payment</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet"/>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #121212;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .container h1 {
+      text-align: center;
+      color: gold;
+      margin-bottom: 30px;
+      font-size: 2em;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #444;
+      background: #1e1e1e;
+      color: #fff;
+      border-radius: 8px;
+      transition: border 0.3s;
+    }
+
+    form input:focus {
+      border-color: gold;
+      outline: none;
+    }
+
+    .card-preview {
+      background: linear-gradient(135deg, #333, #111);
+      color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    }
+
+    .card-preview p {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+
+    .book-button {
+    background: #ffd700;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+    font-size: 10px;
+}
+
+.book-button {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid gold;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  
+  color: #696969;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  font-family: "Roboto";
+}
+
+.book-button:hover {
+  background: rgb(255, 217, 0);
+  box-shadow: 0 0 30px 5px rgba(214, 193, 1, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  color: #000;
+  
+}
+
+.book-button:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+.book-button::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+
+    .submit-btn {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid gold;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  font-family: "Roboto";
+}
+
+.submit-btn:hover {
+  background: rgb(255, 217, 0);
+  box-shadow: 0 0 30px 5px rgba(214, 193, 1, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  color: #000;
+  
+}
+
+.submit-btn:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+.submit-btn::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      .container h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Grand Lumière</h1>
+    <form id="paymentForm">
+      <label for="cardNumber">Card Number</label>
+      <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required />
+
+      <label for="expiryDate">Expiry Date</label>
+      <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required />
+
+      <label for="cvv">CVV</label>
+      <input type="text" id="cvv" placeholder="XXX" maxlength="3" required />
+
+      <label for="cardHolder">Cardholder Name</label>
+      <input type="text" id="cardHolder" placeholder="NAME" required />
+
+      <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+  <button type="submit" class="submit-btn"  onclick="location.href='index.html'">Pay Now</button>
+  <button type="button" class="book-button" onclick="location.href='confirmbooking.html'">Cancel</button>
+</div>
+
+
+
+
+    </form>
+
+    <div class="card-preview" id="cardPreview">
+      <p><strong>Card Number:</strong> <span id="displayCardNumber">----</span></p>
+      <p><strong>Expiry:</strong> <span id="displayExpiryDate">--/--</span></p>
+      <p><strong>Cardholder:</strong> <span id="displayCardHolder">----</span></p>
+    </div>
+  </div>
+
+  <script>
+    const cardNumber = document.getElementById('cardNumber');
+    const expiryDate = document.getElementById('expiryDate');
+    const cardHolder = document.getElementById('cardHolder');
+
+    const displayCardNumber = document.getElementById('displayCardNumber');
+    const displayExpiryDate = document.getElementById('displayExpiryDate');
+    const displayCardHolder = document.getElementById('displayCardHolder');
+
+    cardNumber.addEventListener('input', () => {
+      let formatted = cardNumber.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+      cardNumber.value = formatted;
+      displayCardNumber.textContent = formatted || '----';
+    });
+
+    expiryDate.addEventListener('input', () => {
+      let input = expiryDate.value.replace(/\D/g, '');
+      if (input.length >= 3) {
+        input = input.substring(0, 2) + '/' + input.substring(2, 4);
+      }
+      expiryDate.value = input;
+      displayExpiryDate.textContent = input || '--/--';
+    });
+
+    cardHolder.addEventListener('input', () => {
+      displayCardHolder.textContent = cardHolder.value || '----';
+    });
+
+    document.getElementById('paymentForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Payment processed successfully!'); // Replace with actual logic
+    });
+  </script>
+</body>
+</html>
