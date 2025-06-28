@@ -1624,10 +1624,10 @@ body {
 /*footer*/
 footer {
   background: #111;
-  color: gold;
+  color: #ffd700;
   padding: 60px 0 20px 0;
   text-align: center;
-  border-top: 3px solid #222;
+  border-top: 0.2px solid #ffd700;
 }
 
 .footer-section {
@@ -1636,7 +1636,7 @@ footer {
   align-items: flex-start;
   gap: 100px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 /* Style each section */
@@ -1678,21 +1678,21 @@ footer .parent {
 
 /* Footer bottom */
 .footer-bottom {
-  color: #fff;
-  font-size: 1em;
-  margin-top: 20px;
+  color: #f2c200;
+  font-size: 0.8em;
+  margin-top: 90px;
   text-align: center;
 }
 
 .footersubbtn {
-  width: 800px;
-  height: 32px;
+  width: 600px;
+  height: 30px;
   border: none;
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 10px 10px;
-  border-radius: 6px;
+  border-radius: 5px;
   background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
-  background-size: 50%;
+  background-size: 30%;
   background-position: left;
   color: #ffd277;
   position: relative;
@@ -1716,7 +1716,7 @@ footer .parent {
   border-radius: 7px;
   transition-duration: 1s;
   background-color: rgba(0, 0, 0, 0.842);
-  background-size: 200%;
+  background-size: 20%;
 }
 
 .footersubbtn:hover {
@@ -1778,7 +1778,7 @@ footer .parent {
 }
 
 .footersub:focus {
-   outline: none;
+  outline: none;
   background-color: #1a1a1a;
   color: gold;
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
@@ -1809,6 +1809,13 @@ footer .parent {
   color: #f3d31d;
   letter-spacing: 1.5px;
 }
+
+footer ul li {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
 
 a {
   text-decoration: none;
