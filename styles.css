@@ -87,7 +87,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.book-button {
+.try-btn {
     background: #ffd700;
     border: none;
     font-family: 'Roboto', sans-serif;
@@ -95,7 +95,7 @@ body {
     font-size: 10px;
 }
 
-.book-button {
+.try-btn {
   position: relative;
   padding: 10px 20px;
   border-radius: 7px;
@@ -114,7 +114,7 @@ body {
   font-family: "Roboto";
 }
 
-.book-button:hover {
+.try-btn:hover {
   background: rgb(255, 217, 0);
   box-shadow: 0 0 30px 5px rgba(214, 193, 1, 0.815);
   -webkit-transition: all 0.2s ease-out;
@@ -124,7 +124,7 @@ body {
   
 }
 
-.book-button:hover::before {
+.try-btn:hover::before {
   -webkit-animation: sh02 0.5s 0s linear;
   -moz-animation: sh02 0.5s 0s linear;
   animation: sh02 0.5s 0s linear;
@@ -132,7 +132,7 @@ body {
   letter-spacing: 3px;
 }
 
-.book-button::before {
+.try-btn::before {
   content: '';
   display: block;
   width: 0px;
@@ -268,6 +268,31 @@ body {
         justify-content: center;
         margin-top: 1rem;
     }
+}
+
+@media (max-width: 900px) {
+  .footer-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+  .footer-section > div {
+    max-width: 100%;
+  }
+  .subscription .parent {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-section ul {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 .herodescon {
@@ -1696,16 +1721,16 @@ footer .parent {
 }
 
 .footersubbtn {
-  width: 600px;
-  height: 30px;
+  min-width: 90px;
+  height: 28px;
   border: none;
   font-size: 0.8em;
   padding: 10px 10px;
   border-radius: 5px;
   background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
-  background-size: 30%;
+  background-size: 90%;
   background-position: left;
-  color: #ffd277;
+  color: #030303;
   position: relative;
   display: flex;
   align-items: center;
@@ -1713,10 +1738,13 @@ footer .parent {
   cursor: pointer;
   transition-duration: 2s;
   overflow: hidden;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .footersubbtn::before {
-  position: absolute;
+  display: none;
+  /* position: absolute;
   content: "SUBSCRIBE";
   color: #ffd277;
   display: flex;
@@ -1727,7 +1755,7 @@ footer .parent {
   border-radius: 7px;
   transition-duration: 1s;
   background-color: rgba(0, 0, 0, 0.842);
-  background-size: 20%;
+  background-size: 20%; */
 }
 
 .footersubbtn:hover {
@@ -1751,10 +1779,13 @@ footer .parent {
   align-items: center;
   background: #111; 
   padding: 10px 0;       
-  border-radius: 8px;  
+  border-radius: 8px;
+  justify-content: center;
+  margin-bottom: 10px;  
 }
+
 .footersubscribe input {
-  width:1000px;     
+  width: 250px;     
   padding: 12px;    
   border: none;        
   border-radius: 8px;  
