@@ -76,3 +76,61 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+
+
+// --- Newsletter Subscription Logic ---
+const newsletterForm = document.getElementById('newsletter-form');
+const newsletterEmailInput = document.getElementById('newsletter-email');
+const newsletterSubscribeBtn = document.getElementById('newsletter-subscribe-btn');
+const newsletterMessageDiv = document.getElementById('newsletter-message');
+
+if (newsletterForm) { // Check if the form element exists on the page
+    newsletterForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent the default form submission
+
+        const email = newsletterEmailInput.value;
+        newsletterMessageDiv.textContent = ''; // Clear previous messages
+        newsletterSubscribeBtn.disabled = true; // Disable button to prevent multiple submissions
+        newsletterSubscribeBtn.style.opacity = '0.5'; // Visually indicate disabled state
+
+        if (!email) {
+            newsletterMessageDiv.textContent = 'Please enter your email address.';
+            newsletterSubscribeBtn.disabled = false;
+            newsletterSubscribeBtn.style.opacity = '1';
+            return;
+        }
+
+        try {
+            // Call the Cloud Function
+            const subscribeToNewsletter = firebase.functions().httpsCallable('subscribeToNewsletter');
+            const result = await subscribeToNewsletter({ email: email });
+
+            console.log('Newsletter subscription response:', result.data);
+
+            if (result.data.success) {
+                newsletterMessageDiv.textContent = 'Thank you for subscribing!';
+                newsletterEmailInput.value = ''; // Clear the input field
+            } else {
+                // Display error message from the function, or a generic one
+                newsletterMessageDiv.textContent = result.data.message || 'Subscription failed. Please try again.';
+            }
+
+        } catch (error) {
+            console.error('Error subscribing to newsletter:', error);
+            // Display a user-friendly error message
+            if (error.code === 'already-exists') {
+                 newsletterMessageDiv.textContent = 'You are already subscribed!';
+            } else if (error.code === 'invalid-argument') {
+                 newsletterMessageDiv.textContent = 'Please enter a valid email address.';
+            }
+            else {
+                newsletterMessageDiv.textContent = 'An error occurred during subscription. Please try again later.';
+            }
+        } finally {
+            newsletterSubscribeBtn.disabled = false; // Re-enable the button
+            newsletterSubscribeBtn.style.opacity = '1';
+        }
+    });
+}
+// --- End of Newsletter Subscription Logic ---
