@@ -2,43 +2,55 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin'); // Needed to interact with Firestore
 
+// NEW: The SendGrid Node.js library
+const sgMail = require('@sendgrid/mail');
+
 // Initialize the Firebase Admin SDK. This allows your function to talk to other Firebase services.
 admin.initializeApp();
 
 // Get a reference to the Firestore database
 const db = admin.firestore();
 
+// NEW: Set your SendGrid API Key securely from Firebase functions config
+// IMPORTANT: Make sure you've run 'firebase functions:config:set sendgrid.key="YOUR_SENDGRID_API_KEY"'
+
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY; // Access directly via process.env
+
+if (!SENDGRID_API_KEY) {
+    console.error('SendGrid API key not configured. Set SENDGRID_API_KEY environment variable.');
+    // You might want to throw an error here or ensure emails won't send without the key
+    // For now, if the key is missing, sgMail.send will likely fail, which is caught.
+} else {
+    sgMail.setApiKey(SENDGRID_API_KEY);
+}
+
+
+
 
 // --- Your processBooking Cloud Function ---
 // This function will be called by your frontend JavaScript
-
-export const processBooking = functions.https.onCall(async (data, context) => {
+exports.processBooking = functions.https.onCall(async (data, context) => {
   
   console.log('Received data payload:', data);
    console.log('Auth context:', context.auth);
    
 
   // 1. Get data sent from the frontend
-  const { showtimeId, selectedSeats, customerName, customerMobile, customerEmail } = data;
+  const { showtimeId, selectedSeats, customerName, customerMobile, customerEmail, totalAmount } = data; // Added totalAmount from your script
 
   // 2. Basic validation of incoming data
   if (
-  !data ||
-  typeof data.showtimeId !== 'string' ||
-  !Array.isArray(data.selectedSeats) ||
-  data.selectedSeats.length === 0 ||
-  typeof data.customerName !== 'string' ||
-  typeof data.customerMobile !== 'string' ||
-  typeof data.customerEmail !== 'string' ||
-  typeof data.totalAmount !== 'number'
+  !showtimeId ||
+  !Array.isArray(selectedSeats) ||
+  selectedSeats.length === 0 ||
+  !customerName ||
+  !customerMobile ||
+  !customerEmail ||
+  typeof totalAmount !== 'number' // Ensuring totalAmount is present and a number
 ) {
-  console.error('Validation failed: Incoming data is missing required fields.', data);
+  console.error('Validation failed: Missing or invalid booking information.', data);
   throw new functions.https.HttpsError('invalid-argument', 'Missing or invalid booking information.');
 }
-
-
-
-
   
 
     console.log('Second validation block passed. Proceeding with booking process...');
@@ -101,9 +113,9 @@ export const processBooking = functions.https.onCall(async (data, context) => {
 
       // 6. Calculate final amounts (VAT, Total) based on backend recalculation
       const vatAmount = subtotalAmount * vatRate;
-      const totalAmount = subtotalAmount + vatAmount;
+      const calculatedTotalAmount = subtotalAmount + vatAmount; // Renamed for clarity, avoiding conflict with frontend totalAmount
 
-      console.log(`Calculated amounts - Subtotal: ${subtotalAmount}, VAT: ${vatAmount}, Total: ${totalAmount}`);
+      console.log(`Calculated amounts - Subtotal: ${subtotalAmount}, VAT: ${vatAmount}, Total: ${calculatedTotalAmount}`);
 
       // 7. If all checks passed, perform the writes *within the transaction*:
       //    a) Update the status of the selected seats in the showtime document to 'booked'.
@@ -121,7 +133,7 @@ export const processBooking = functions.https.onCall(async (data, context) => {
         numberOfTickets: selectedSeats.length,
         subtotalAmount: subtotalAmount, // Store backend calculated amounts
         vatAmount: vatAmount,
-        totalAmount: totalAmount, // Store backend calculated amounts
+        totalAmount: calculatedTotalAmount, // Store backend calculated amounts
         customerName: customerName,
         customerMobile: customerMobile,
         customerEmail: customerEmail,
@@ -136,7 +148,7 @@ export const processBooking = functions.https.onCall(async (data, context) => {
       return {
           success: true,
           bookingId: newBookingRef.id,
-          totalAmount: totalAmount, // Return the backend calculated total
+          totalAmount: calculatedTotalAmount, // Return the backend calculated total
           message: "Booking completed successfully!"
       }; // Return the result of the transaction
 
@@ -151,13 +163,79 @@ export const processBooking = functions.https.onCall(async (data, context) => {
 
     // If it's an HttpsError we threw, re-throw it with its specific code and message
     if (error.code) {
-       throw error;
+      throw error;
     }
     // For any other unexpected errors, throw a generic internal error
     throw new functions.https.HttpsError('internal', 'An unexpected error occurred during the booking process.');
   }
-  // This is the closing brace for the exports.processBooking function definition
-}); // <= This brace closes the entire function definition
+});
+
+
+
+
+
+
+
+// --- NEW: Your subscribeToNewsletter Cloud Function ---
+exports.subscribeToNewsletter = functions.https.onCall(async (data, context) => {
+    const email = data.email;
+
+    // Basic email validation
+    if (!email || !email.includes('@') || !email.includes('.')) {
+        throw new functions.https.HttpsError('invalid-argument', 'Invalid email address provided.');
+    }
+
+    // --- IMPORTANT: Replace 'YOUR_VERIFIED_SENDER_EMAIL@example.com' with your actual SendGrid Verified Sender Email ---
+    const msg = {
+        to: email,
+        from: 'yoshedirisinghe28@gmail.com', // <--- CHANGE THIS!
+        subject: 'Welcome to the Grand Lumiere Newsletter!',
+        text: `Hello there,
+
+        Thank you for subscribing to the Grand Lumiere newsletter!
+
+        Get ready for exclusive updates on:
+        ✨ Latest movie releases
+        🎟️ Special offers and discounts
+        🎉 Exciting events and VIP experiences
+
+        We're thrilled to have you join our cinematic family.
+
+        See you at the movies!
+
+        Warmly,
+        The Grand Lumiere Team
+        www.grandlumiere.web.app`,
+        html: `
+        <p>Hello there,</p>
+        <p>Thank you for subscribing to the <strong>Grand Lumiere</strong> newsletter!</p>
+        <p>Get ready for exclusive updates on:</p>
+        <ul>
+            <li>✨ Latest movie releases</li>
+            <li>🎟️ Special offers and discounts</li>
+            <li>🎉 Exciting events and VIP experiences</li>
+        </ul>
+        <p>We're thrilled to have you join our cinematic family.</p>
+        <p>See you at the movies!</p>
+        <p>Warmly,<br>The Grand Lumiere Team</p>
+        <p><a href="https://grand-lumiere.web.app" style="color: #FFD700;">Visit our website</a></p>
+        `
+    };
+
+    try {
+        await sgMail.send(msg);
+        console.log(`Email sent successfully to ${email}`);
+        return { success: true, message: 'Successfully subscribed and welcome email sent!' };
+    } catch (error) {
+        console.error('Error sending email:', error.response ? error.response.body : error);
+        if (error.code === 401) { // Unauthorized - typically means API key issue
+            throw new functions.https.HttpsError('internal', 'SendGrid authentication failed. Please check API key.');
+        } else if (error.code === 400) { // Bad Request - often invalid recipient
+             throw new functions.https.HttpsError('invalid-argument', 'Invalid recipient email or mail format.');
+        }
+        throw new functions.https.HttpsError('internal', 'An unexpected error occurred during the email sending process.');
+    }
+});
 
 
 // Set up CORS middleware. This is important if your frontend is on a different domain (like localhost).
@@ -204,6 +282,3 @@ exports.submitContactForm = functions.https.onRequest((request, response) => {
     }
   });
 });
-
-// Ensure there are no extra characters or code outside the function definitions
-// at the very end of the file.
