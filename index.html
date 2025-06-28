@@ -235,11 +235,14 @@
     </div>
     <div class="subscription">
             <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-            <div class="footersubscribe">
-              <input type="text" name="text" class="footersub" placeholder="Enter your Email">
-            <button class="footersubbtn"></button><br>
-            </div><br>
+            <form id="newsletter-form" class="footersubscribe"></form>
+              
+              <input type="email" id="newsletter-email" class="footersub" placeholder="Enter your Email" required>                
+              <button type="submit" id="newsletter-subscribe-btn" class="footersubbtn"></button><br>
+            </form><br>
+                <div id="newsletter-message" style="color: gold; text-align: center; margin-top: 10px;"></div>
             <h4 class="social-media">FIND US ON:</h4>
+            </div><br>
 
             <div class="parent">
   <a href="https://facebook.com" target="_blank" class="child">
