@@ -1665,7 +1665,7 @@ footer .parent {
   display: flex;
   justify-content: center;
   gap: 2px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 /* Space out the social media icons in the subscription section */
@@ -1685,12 +1685,14 @@ footer .parent {
 }
 
 .footersubbtn {
-  width: 200px;
-  height: 40px;
+  width: 800px;
+  height: 32px;
   border: none;
-  border-radius: 10px;
+  font-size: 0.9em;
+  padding: 10px 10px;
+  border-radius: 6px;
   background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
-  background-size: 250%;
+  background-size: 50%;
   background-position: left;
   color: #ffd277;
   position: relative;
@@ -1711,7 +1713,7 @@ footer .parent {
   justify-content: center;
   width: 97%;
   height: 90%;
-  border-radius: 8px;
+  border-radius: 7px;
   transition-duration: 1s;
   background-color: rgba(0, 0, 0, 0.842);
   background-size: 200%;
@@ -1722,7 +1724,7 @@ footer .parent {
   transition-duration: 1s;
 }
 
-.Bfootersubbtntn:hover::before {
+.footersubbtntn:hover::before {
   background-position: right;
   transition-duration: 0.5s;
 }
@@ -1736,6 +1738,18 @@ footer .parent {
   display: flex;
   flex-direction: row;
   align-items: center;
+  background: #111; 
+  padding: 10px 0;       
+  border-radius: 8px;  
+}
+.footersubscribe input {
+  width:1000px;     
+  padding: 12px;    
+  border: none;        
+  border-radius: 8px;  
+  background-color: #222; 
+  color: rgb(252, 252, 252);    
+  font-size: 13px;     
 }
 
 .footersub {
@@ -1747,7 +1761,7 @@ footer .parent {
   border: 1.5px solid gold;
   border-radius: 12px;
   background-color: #1a1a1a; 
-  font-size: 0.95rem;
+  font-size: 0.90rem;
   font-weight: 600;
   color: gold;
   text-align: center;
