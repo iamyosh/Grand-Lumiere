@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const auth = firebase.auth(); // Using the compat SDK syntax
 
+
+if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+    // You can adjust the port (5001) if your functions emulator starts on a different one
+    firebase.functions().useEmulator("localhost", 5001);
+}
+
 // Get references to the elements we need to show/hide
 const loginLinkElement = document.getElementById('loginLink'); // Get the <a> tag
 const usernameDisplaySpan = document.getElementById('usernameDisplay'); // Get the span
