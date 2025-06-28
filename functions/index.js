@@ -16,6 +16,11 @@ const db = admin.firestore();
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY; // Access directly via process.env
 
+// ADD THIS LINE FOR DEBUGGING
+console.log('DEBUG: Emulator SendGrid API Key being used:', SENDGRID_API_KEY ? SENDGRID_API_KEY.substring(0, 10) + '...' : 'Key is undefined/null');
+
+
+
 if (!SENDGRID_API_KEY) {
     console.error('SendGrid API key not configured. Set SENDGRID_API_KEY environment variable.');
     // You might want to throw an error here or ensure emails won't send without the key
@@ -178,7 +183,17 @@ exports.processBooking = functions.https.onCall(async (data, context) => {
 
 // --- NEW: Your subscribeToNewsletter Cloud Function ---
 exports.subscribeToNewsletter = functions.https.onCall(async (data, context) => {
-    const email = data.email;
+    
+  
+  const email = data.data.email;
+
+//     // --- ADD THIS LINE FOR DEBUGGING ---
+//     console.log('Cloud Function received email:', email);
+//     console.log('Type of received email:', typeof email);
+//     console.log('Does it include "@"?', email.includes('@'));
+//     console.log('Does it include "."?', email.includes('.'));
+//     console.log('Length of received email:', email.length);
+//     // --- END DEBUGGING LINES ---
 
     // Basic email validation
     if (!email || !email.includes('@') || !email.includes('.')) {
