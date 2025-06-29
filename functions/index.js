@@ -185,7 +185,7 @@ exports.processBooking = functions.https.onCall(async (data, context) => {
 exports.subscribeToNewsletter = functions.https.onCall(async (data, context) => {
     
   
-  const email = data.data.email;
+  const email = data.email;
 
 //     // --- ADD THIS LINE FOR DEBUGGING ---
 //     console.log('Cloud Function received email:', email);
