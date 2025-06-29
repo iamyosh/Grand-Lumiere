@@ -7,6 +7,10 @@ body {
     overflow-x: hidden;
 }
 
+.logo h2 .grand-lumiere-link{
+  color: #f3d31d !important;
+}
+
 /* Upgraded Navbar */
 .navbar {
     margin-top: 0;
