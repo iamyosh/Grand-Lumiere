@@ -1,3 +1,69 @@
+.try-btn {
+    background: #ffd700;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.6);
+    font-size: 10px;
+}
+
+.try-btn {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid gold;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  
+  color: #696969;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  font-family: "Roboto";
+}
+
+.try-btn:hover {
+  background: rgb(255, 217, 0);
+  box-shadow: 0 0 30px 5px rgba(214, 193, 1, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  color: #000;
+  
+}
+
+.try-btn:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+.try-btn::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+
 .movie-container3 {
   display: flex;
   flex-direction: column;
@@ -46,4 +112,259 @@
   position: relative;
   border-radius: 50px;
   overflow: hidden;
+}
+
+/*footer*/
+
+footer {
+  background: #111;
+  color: #ffd700;
+  padding: 60px 0 20px 0;
+  text-align: center;
+  border-top: 0.2px solid #ffd700;
+}
+
+.footer-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .footer-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+  .footer-section > div {
+    max-width: 100%;
+  }
+  .subscription .parent {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-section ul {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/* Style each section */
+footer .section-one,
+footer .section-two,
+footer .subscription {
+  flex: 1 1 220px;
+  min-width: 120px;
+  max-width: 300px;
+  margin: 0 10px;
+  text-align: left;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 2.6; 
+}
+
+/* Remove list dots and padding */
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Center the social icons */
+footer .parent {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 5px;
+}
+
+/* Space out the social media icons in the subscription section */
+.subscription .parent {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  color: #f2c200;
+  font-size: 0.8em;
+  margin-top: 90px;
+  text-align: center;
+}
+
+.footersubbtn {
+  min-width: 90px;
+  height: 28px;
+  border: none;
+  font-size: 0.8em;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+  background-size: 90%;
+  background-position: left;
+  color: #030303;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 2s;
+  overflow: hidden;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.footersubbtn::before {
+  display: none;
+  /* position: absolute;
+  content: "SUBSCRIBE";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 7px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 20%; */
+}
+
+.footersubbtn:hover {
+  background-position: right;
+  transition-duration: 1s;
+}
+
+.footersubbtntn:hover::before {
+  background-position: right;
+  transition-duration: 0.5s;
+}
+
+.footersubbtn:active {
+  transform: scale(0.95);
+}
+
+.footersubscribe{
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #111; 
+  padding: 10px 0;       
+  border-radius: 8px;
+  justify-content: center;
+  margin-bottom: 10px;  
+}
+
+.footersubscribe input {
+  width: 250px;     
+  padding: 12px;    
+  border: none;        
+  border-radius: 8px;  
+  background-color: #222; 
+  color: rgb(252, 252, 252);    
+  font-size: 13px;     
+}
+
+.footersub {
+  all: unset; 
+  display: block;
+  width: 100%;
+  height: 12px;
+  padding:14px 16px;
+  border: 1.5px solid gold;
+  border-radius: 12px;
+  background-color: #1a1a1a; 
+  font-size: 0.90rem;
+  font-weight: 600;
+  color: gold;
+  text-align: center;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.footersub::placeholder {
+  color: rgba(255, 215, 0, 0.4);
+  font-weight: normal;
+}
+
+.footersub:focus {
+  outline: none;
+  background-color: #1a1a1a;
+  color: gold;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  border-color: #ffd700;
+}
+
+.subscription {
+  padding: 40px;
+  background-image: url(images/contact-us.png);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 30px;
+  color: #eee;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.subscription social-media {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.subscription p {
+  font-size: 15px;
+  margin-bottom: 25px;
+  font-family: "roboto";
+  font-weight:lighter;
+  color: #f3d31d;
+  letter-spacing: 1.5px;
+}
+
+footer ul li {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.footerlink {
+  color: #fff;
+  line-height: 2;
+  position: relative;
+}
+
+.footerlink::before {
+content: '';
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #fff;
+  position: absolute;
+  bottom: -.25rem;
+  left: 0;
+  transition: width .4s;
+}
+
+.footerlink:hover::before {
+  width: 100%;
+  left: 0;
 }
