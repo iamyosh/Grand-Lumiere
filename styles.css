@@ -1669,10 +1669,16 @@ body {
 /*footer*/
 footer {
   background: #111;
+
   color: #ffd700;
   padding: 60px 0 20px 0;
   text-align: center;
-  border-top: 0.2px solid #ffd700;
+  border-top: 0.9px solid #ffd700;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  box-shadow:
+    -30px -30px 60px rgba(255, 215, 0, 0.2), /* Top-left */
+     30px -30px 60px rgba(255, 215, 0, 0.2);  /* Top-right */
 }
 
 .footer-section {
