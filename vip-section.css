@@ -9,10 +9,9 @@
   width: 90%;
   height: 680px;
   background-image: url(images/login-bg.jpg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% auto;
 }
 
 .logo h2 .grand-lumiere-link{
