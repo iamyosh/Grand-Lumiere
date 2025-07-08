@@ -1633,6 +1633,7 @@ body {
   background-position: center;
   border-radius: 40px;
   border: 1px solid rgba(255, 215, 0, 0.2);
+  padding-bottom: 60px;
 }
 
 .vip-container h1 {
@@ -1694,8 +1695,8 @@ footer {
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
   box-shadow:
-    -30px -30px 60px rgba(255, 215, 0, 0.2), /* Top-left */
-     30px -30px 60px rgba(255, 215, 0, 0.2);  /* Top-right */
+    -20px -20px 30px rgba(255, 215, 0, 0.2), /* Top-left */
+     20px -20px 30px rgba(255, 215, 0, 0.2);  /* Top-right */
 }
 
 .footer-section {
