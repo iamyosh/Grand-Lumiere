@@ -1630,7 +1630,7 @@ body {
   height: 680px;
   background-image: url(images/login-bg.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-position: center;
 }
 
