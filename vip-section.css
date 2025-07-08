@@ -1,4 +1,4 @@
-.vip-container{
+/* .vip-container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -350,4 +350,4 @@ content: '';
 .footerlink:hover::before {
   width: 100%;
   left: 0;
-}
+} 
