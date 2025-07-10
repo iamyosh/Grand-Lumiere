@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" class="logooo" sizes="32x32" type="image/png" href="/images/icon.png">
+
     <title>Login Page</title>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -14,14 +17,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
 
+    <!-- cursive h2 in nav bar -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
 </head>
 <body>
 
 <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">
+         <div class="logo" id="logo-custom-cursor">
             <img src="images/Black_and_Gold_Elegant_Luxury_Flower_Jewelry_Logo-removebg-preview.png" alt="logo" />
-            <h2>Grand Lumière</h2>
+            <h2><a href="index.html" class="grand-lumiere-link">Grand Lumière</a></h2>
         </div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -30,7 +36,7 @@
             <li><a href="contactus.html">Contact Us</a></li>
         </ul>
         <div class="nav-buttons">
-        <a href="nowshowingm.html"> <button class="book-button">Book a Show</button></a>
+        <a href="nowshowingm.html"> <button class="try-btn">Book a Show</button></a>
         <a href="login.html"><button class="login-button" id="loginBtn">Login</button></a>
         <span id="usernameDisplay" style="display: none;"></span>
     </div>
@@ -103,50 +109,52 @@
     <hr class="login-box-bottom-divider">
 
     <footer>
+  <div class="footer-section">
     <div class="section-one">
-            <p>QUICK LINKS</p>
-            <ul>
-                <li>HOME</li>
-                <li>MOVIES</li>
-                <li>OFFERS & SERVICES</li>
-                <li>EVENTS</li>
-            </ul>
-        </div>
-
-        <div class="section-two">
-            <p>SUPPORT</p>
-            <ul>
-            <li>ABOUT US</li>
-            <li>CONTACT US</li>
-            <li>TERMS & CONDITIONS</li>
-            </ul>
+      <p>QUICK LINKS</p>
+      <ul>
+        <li><a href="index.html" class="footerlink">HOME</a></li>
+        <li><a href="nowshowingm.html" class="footerlink">MOVIES</a></li>
+        <li><a href="index.html#offersection" class="footerlink">OFFERS & SERVICES</a></li>
+        <li><a href="events.html" class="footerlink">EVENTS</a></li>
+      </ul>
+    </div>
+    <div class="section-two">
+      <p>SUPPORT</p>
+      <ul>
+        <li><a href="aboutus.html" class="footerlink">ABOUT US</a></li>
+        <li><a href="contactus.html" class="footerlink">CONTACT US</a></li>
+        <li><a href="terms.html" class="footerlink">TERMS & CONDITIONS</a></li>
+      </ul>
     </div>
     <div class="subscription">
-            <p>SUBSCRIBE TO OUR NEWSLETTER</p>
-            <input type="text" id="text" name="text" placeholder="Enter your Email">
-            <h4 class="social-media">FIND US ON:</h4>
-
-            <div class="parent">
-  <a href="https://facebook.com" target="_blank" class="child">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-  <a href="https://twitter.com" target="_blank" class="child">
-    <i class="fab fa-twitter"></i>
-  </a>
-  <a href="https://instagram.com" target="_blank" class="child">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://linkedin.com" target="_blank" class="child">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-</div>
-
-            <br>
-        </div><br><br><br><br>
-        <div class="footer-bottom">
-            <p>© 2025 GRAND LUMIERE. All rights reserved</p>
-        </div>
-    </footer>
+      <p>SUBSCRIBE TO OUR NEWSLETTER</p>
+      <form id="newsletter-form" class="footersubscribe">
+        <input type="email" id="newsletter-email" class="footersub" placeholder="Enter your Email" required>
+        <button type="submit" id="newsletter-subscribe-btn" class="footersubbtn">SUBSCRIBE</button>
+      </form>
+      <div id="newsletter-message" style="color: gold; text-align: center; margin-top: 10px;"></div>
+      <h4 class="social-media">FIND US ON:</h4>
+      <div class="parent">
+        <a href="https://facebook.com" target="_blank" class="child">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="child">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="child">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="child">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 GRAND LUMIERE. All rights reserved</p>
+  </div>
+</footer>
 
 <!-- Required: The core Firebase JS SDK. Always must be listed first. -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
