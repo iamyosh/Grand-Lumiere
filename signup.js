@@ -51,16 +51,7 @@ if (signupForm) {
 
         signupForm.reset(); 
 
-        // // Optional: Display a success message
-        // if (signupSuccessMsg) {
-        //     signupSuccessMsg.textContent = `Account created for ${user.email}!`;
-        //     if (signupErrorMsg) signupErrorMsg.textContent = ""; // Clear any previous errors
-        // }
-
-        // ----- Step 8: Store Additional Data (Name, Mobile) in Firestore -----
-        // You only get the user's email and UID from Authentication directly.
-        // Name, mobile, etc., should be saved separately.
-        // This happens *after* the user is successfully created in Auth.
+    
 
         // Get the additional data
         const name = nameInput.value;
