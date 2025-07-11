@@ -1,11 +1,10 @@
-// Assuming this script is loaded AFTER the Firebase SDK initialization
 
 // Get references to your form and input elements
-const signupForm = document.querySelector('.signup-form'); // Make sure your form has id="signupForm"
-const emailInput = document.getElementById('email'); // Make sure your email input has id="signupEmail"
-const passwordInput = document.getElementById('password'); // Make sure your password input has id="signupPassword"
-const nameInput = document.getElementById('name'); // Assuming id="signupName"
-const mobileInput = document.getElementById('mobile'); // Assuming id="signupMobile"
+const signupForm = document.querySelector('.signup-form'); 
+const emailInput = document.getElementById('email'); 
+const passwordInput = document.getElementById('password'); 
+const nameInput = document.getElementById('name'); 
+const mobileInput = document.getElementById('mobile'); 
 
 // Get references to your message elements
 const feedbackMsgElement = document.getElementById('signupFeedbackMessage'); // Assuming you added <p id="signupFeedbackMessage"></p>
