@@ -6,10 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Remove the import statements if you are including Firebase via <script> tags
-// import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
-const auth = firebase.auth(); // Using the compat SDK syntax
+const auth = firebase.auth(); 
 
 
 if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
@@ -30,19 +28,17 @@ if (loginLinkElement && usernameDisplaySpan && logoutButtonElement) {
         if (user) {
             console.log('User is logged in:', user.email);
 
-            // Hide the login link (which contains the login button)
             loginLinkElement.style.display = 'none';
 
-            usernameDisplaySpan.style.display = 'inline'; // Use 'inline' to keep it in line with other nav items
+            usernameDisplaySpan.style.display = 'inline'; 
             usernameDisplaySpan.textContent = `Welcome, ${user.email}`; 
 
-            // Show the logout button
-            logoutButtonElement.style.display = 'inline-block'; // Use 'inline-block' for button styling
+            logoutButtonElement.style.display = 'inline-block'; //button styling
 
         } else {
             console.log('No user signed in.');
 
-            loginLinkElement.style.display = 'inline-block'; // Or your default display style
+            loginLinkElement.style.display = 'inline-block'; 
 
             usernameDisplaySpan.style.display = 'none';
             usernameDisplaySpan.textContent = '';
@@ -73,7 +69,7 @@ if (loginLinkElement && usernameDisplaySpan && logoutButtonElement) {
 // Your existing DOMContentLoaded listener (keep this as is)
 document.addEventListener("DOMContentLoaded", () => {
     const tryBtn = document.querySelector(".try-btn");
-    if (tryBtn) { // Added a check to make sure the element exists
+    if (tryBtn) { 
         tryBtn.addEventListener("click", () => {
             alert("Welcome to the Lumiere Lounge Experience!");
         });
@@ -93,11 +89,11 @@ const newsletterMessageDiv = document.getElementById('newsletter-message');
 
 if (newsletterForm) { // Check if the form element exists on the page
     newsletterForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevent the default form submission
+        event.preventDefault(); 
 
         const email = newsletterEmailInput.value;
-        newsletterMessageDiv.textContent = ''; // Clear previous messages
-        newsletterSubscribeBtn.disabled = true; // Disable button to prevent multiple submissions
+        newsletterMessageDiv.textContent = ''; 
+        newsletterSubscribeBtn.disabled = true; 
         newsletterSubscribeBtn.style.opacity = '0.5'; // Visually indicate disabled state
 
         if (!email) {
@@ -116,27 +112,24 @@ if (newsletterForm) { // Check if the form element exists on the page
 
             if (result.data.success) {
                 newsletterMessageDiv.textContent = 'Thank you for subscribing!';
-                newsletterEmailInput.value = ''; // Clear the input field
+                newsletterEmailInput.value = ''; 
             } else {
-                // Display error message from the function, or a generic one
                 newsletterMessageDiv.textContent = result.data.message || 'Subscription failed. Please try again.';
             }
 
         } catch (error) {
             console.error('Error subscribing to newsletter:', error);
-            // Display a user-friendly error message
             if (error.code === 'already-exists') {
-                 newsletterMessageDiv.textContent = 'You are already subscribed!';
+                newsletterMessageDiv.textContent = 'You are already subscribed!';
             } else if (error.code === 'invalid-argument') {
-                 newsletterMessageDiv.textContent = 'Please enter a valid email address.';
+                newsletterMessageDiv.textContent = 'Please enter a valid email address.';
             }
             else {
                 newsletterMessageDiv.textContent = 'An error occurred during subscription. Please try again later.';
             }
         } finally {
-            newsletterSubscribeBtn.disabled = false; // Re-enable the button
+            newsletterSubscribeBtn.disabled = false; 
             newsletterSubscribeBtn.style.opacity = '1';
         }
     });
 }
-// --- End of Newsletter Subscription Logic ---
