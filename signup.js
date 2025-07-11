@@ -11,8 +11,8 @@ const feedbackMsgElement = document.getElementById('signupFeedbackMessage');
 const errorMsgElement = document.getElementById('signupErrorMessage'); 
 
 
-const signupErrorMsg = document.getElementById('signupErrorMsg'); // Optional: Element to display errors
-const signupSuccessMsg = document.getElementById('signupSuccessMsg'); // Optional: Element to display success
+const signupErrorMsg = document.getElementById('signupErrorMsg'); 
+const signupSuccessMsg = document.getElementById('signupSuccessMsg'); 
 
 // Check if the form element exists (good practice!)
 if (signupForm) {
