@@ -1777,18 +1777,6 @@ footer .parent {
 
 .footersubbtn::before {
   display: none;
-  /* position: absolute;
-  content: "SUBSCRIBE";
-  color: #ffd277;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 97%;
-  height: 90%;
-  border-radius: 7px;
-  transition-duration: 1s;
-  background-color: rgba(0, 0, 0, 0.842);
-  background-size: 20%; */
 }
 
 .footersubbtn:hover {
