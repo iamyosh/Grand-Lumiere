@@ -25,12 +25,9 @@
    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
       import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
       import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-functions.js';
-      // Import other services here if you need them (e.g., Auth)
-      // import { getAuth } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
 
 
-  // Initialize Firebase *using the global firebase object*
-  // PASTE your actual Firebase config object here (from Firebase console)
+  // Initialize Firebase 
   const firebaseConfig = {
     apiKey: "AIzaSyAacaHmJ9u9VOkyqo6sditvfh4X-rijWtU",
   authDomain: "grand-lumiere.firebaseapp.com",
@@ -57,7 +54,6 @@
       window.firebaseDoc = doc; // The doc() function from Firestore
       window.firebaseGetDoc = getDoc; // The getDoc() function from Firestore
       window.firebaseHttpsCallable = httpsCallable; // The httpsCallable() function from Functions
-      // If using Auth: window.firebaseGetAuth = getAuth; window.firebaseAuth = auth; etc.
 
 
 
@@ -90,21 +86,13 @@
     </div>
     </nav>
 
-    <!-- Hero Section -->
-    <!--<section class="hero">
-    <div class="hero-content">
-      <div class="hero-button">
-        <button class="herobtn">Try It Now</button>
-      </div>
-    </div>
-    </section>-->
 
 <div class="bookingcontainer-wrapper">    
 <div class="bookingconfirmcontainer">
     <div class="left">
       <h2>RESERVATION DETAILS</h2><br>
-      <!-- From Uiverse.io by alexruix --> 
-    <div class="form__group field">
+
+      <div class="form__group field">
     <input required="" placeholder="Name" class="form__field" type="input" id="customer-name">
     <label class="form__label" for="customer-name">NAME</label>
     </div><br><br>
