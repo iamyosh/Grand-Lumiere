@@ -28,6 +28,7 @@ if (signupForm) {
     const email = emailInput.value;
     const password = passwordInput.value;
 
+
     if (email.length === 0 || password.length === 0) {
         if (signupErrorMsg) signupErrorMsg.textContent = "Please enter email and password.";
       return; // Stop the function
@@ -41,8 +42,9 @@ if (signupForm) {
 
         console.log('User signed up:', user);
 
-        // **ADD THIS PART to display success message on the page**
-      if (feedbackMsgElement) {
+
+
+              if (feedbackMsgElement) {
         feedbackMsgElement.textContent = `Successfully signed up as ${user.email}!`;
         feedbackMsgElement.style.color = 'green'; // Optional: make it green
       }
