@@ -81,7 +81,7 @@ if (signupForm) {
         .catch((error) => {
         // Handle errors during signup
         const errorCode = error.code; // Firebase specific error code (e.g., 'auth/email-already-in-use')
-        const errorMessage = error.message; // User-friendly error message
+        const errorMessage = error.message; 
 
         console.error('Error signing up:', errorCode, errorMessage);
 
@@ -89,7 +89,6 @@ if (signupForm) {
         errorMsgElement.textContent = `Signup failed: ${errorMessage}`;
         errorMsgElement.style.color = 'red';
       }
-    // Clear success message if it was there
       if (feedbackMsgElement) feedbackMsgElement.textContent = '';
 
         
