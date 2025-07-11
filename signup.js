@@ -7,8 +7,8 @@ const nameInput = document.getElementById('name');
 const mobileInput = document.getElementById('mobile'); 
 
 // Get references to your message elements
-const feedbackMsgElement = document.getElementById('signupFeedbackMessage'); // Assuming you added <p id="signupFeedbackMessage"></p>
-const errorMsgElement = document.getElementById('signupErrorMessage'); // Assuming you added <p id="signupErrorMessage"></p>
+const feedbackMsgElement = document.getElementById('signupFeedbackMessage'); 
+const errorMsgElement = document.getElementById('signupErrorMessage'); 
 
 
 const signupErrorMsg = document.getElementById('signupErrorMsg'); // Optional: Element to display errors
@@ -28,7 +28,6 @@ if (signupForm) {
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    // Basic validation (you'll want more robust validation)
     if (email.length === 0 || password.length === 0) {
         if (signupErrorMsg) signupErrorMsg.textContent = "Please enter email and password.";
       return; // Stop the function
