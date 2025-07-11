@@ -12,7 +12,7 @@ if (!db || !functions || !httpsCallable || !doc || !getDoc) {
 
 // Get references to elements you need to disable/hide if loading fails
     const proceedLink = document.getElementById('proceed-link');
-    if(proceedLink) proceedLink.style.display = 'none'; // Hide or disable button if Firebase fails
+    if(proceedLink) proceedLink.style.display = 'none'; 
     
 // Find all seats and disable them if needed
     document.querySelectorAll('[data-seat-name]').forEach(el => {
@@ -22,23 +22,24 @@ if (!db || !functions || !httpsCallable || !doc || !getDoc) {
     
 
 // Display an error message on the page itself
-    const mainBookingContainer = document.querySelector('.seatbooking-container'); // Get your main seat container
+    const mainBookingContainer = document.querySelector('.seatbooking-container'); 
     if (mainBookingContainer) {
-        mainBookingContainer.innerHTML = "<h1>Error: Could not load booking features.</h1>"; // Replace content
+        mainBookingContainer.innerHTML = "<h1>Error: Could not load booking features.</h1>"; 
     }
      throw new Error("Firebase not loaded correctly.");
 }
 
 
-// *** REPLACE THIS WITH THE ACTUAL SHOWTIME ID YOU NOTED DOWN FOR booking1.html ***
+
+
 const currentShowtimeId = 'woY7OSArG31Da7Omsng3'; 
 
 
 
 // --- Declare Variables ---
-let currentShowtimeData = null; // Store the fetched showtime document data
-let seatPrices = {}; // Store prices from the showtime data
-let selectedSeats = new Set(); // Use a Set to track selected seat names (e.g., {'VL1', 'H3'})
+let currentShowtimeData = null; 
+let seatPrices = {}; 
+let selectedSeats = new Set(); 
 
 
 const vipContainer = document.getElementById('vip-seats'); 
@@ -65,7 +66,7 @@ if(proceedToReservationButton && proceedLink) {
      console.error("Proceed to Reservation button or link not found in HTML!");
 }
 
-//6. Function to fetch Showtime Data
+//Function to fetch Showtime Data
 async function loadShowtimeData(showtimeId) {
   try {
     const showtimeRef = doc(db, 'showtimes', showtimeId);
@@ -86,7 +87,7 @@ async function loadShowtimeData(showtimeId) {
          alert("Error: Showtime data is incomplete.");
          if(showtimeDetailsElement) showtimeDetailsElement.textContent = "Showtime data incomplete.";
           if(proceedToReservationButton) proceedToReservationButton.disabled = true;
-         return; // Stop execution
+         return; 
     }
 
     seatPrices = currentShowtimeData.prices; // Store prices for calculations
@@ -139,47 +140,41 @@ function renderSeats(seatsData) {
     if (allSeatCheckboxes.length === 0) {
         console.error("No seat checkbox elements with 'data-seat-name' attribute found in HTML!");
         alert("Error: Seat elements not found in HTML. Please ensure checkbox inputs have the 'data-seat-name' attribute.");
-        if(proceedToReservationButton) proceedToReservationButton.disabled = true; // Disable booking
-        return; 
+        if(proceedToReservationButton) proceedToReservationButton.disabled = true; 
     }
 
     allSeatCheckboxes.forEach(checkbox => {
-        const seatName = checkbox.dataset.seatName; // Get the seat name from the data attribute
-        const seatData = seatsData[seatName]; // Look up this seat in the data fetched from Firestore
+        const seatName = checkbox.dataset.seatName; 
+        const seatData = seatsData[seatName]; 
 
         
         const seatSpan = checkbox.closest('label')?.querySelector('.checkbox-box');
 
-        // Remove any status/selection classes from the span that might be lingering from previous states
         if (seatSpan) {
             seatSpan.classList.remove('available', 'booked', 'selected', 'unavailable', 'reserved'); 
         }
 
         if (!seatData) {
             console.warn(`Seat "${seatName}" found in HTML but not in Firestore data for this showtime!`);
-            if (seatSpan) seatSpan.classList.add('unavailable'); // Style it as unavailable
+            if (seatSpan) seatSpan.classList.add('unavailable'); 
             checkbox.disabled = true; 
             checkbox.checked = false; 
-             // Remove any potential click listeners added previously
             checkbox.removeEventListener('change', handleCheckboxChange);
             return; 
         }
 
-        // Add the correct status class to the span based on Firestore data
         if (seatSpan) {
             seatSpan.classList.add(seatData.status); 
         }
 
 
-        // Handle seats based on their status from Firestore
         if (seatData.status === 'booked') {
             checkbox.disabled = true;
             checkbox.checked = false;
 
-            // Remove any click listeners previously added to prevent interaction
              checkbox.removeEventListener('change', handleCheckboxChange);
 
-        } else { // Status is 'available'
+        } else { 
              checkbox.disabled = false;
 
            
@@ -208,7 +203,7 @@ function addSeatSelectionListeners() {
 
 
 
-// --- 8. Function to handle Checkbox Changes (Seat Selection) ---
+// Function to handle Checkbox Changes (Seat Selection)
 function handleCheckboxChange(event) {
     const checkbox = event.target;
     const seatName = checkbox.dataset.seatName;
@@ -222,16 +217,14 @@ function handleCheckboxChange(event) {
     }
 
     if (checkbox.checked) {
-        // Seat is selected - add to the Set
         selectedSeats.add(seatName);
-        if(seatSpan) seatSpan.classList.add('selected'); // Add selected class for styling
+        if(seatSpan) seatSpan.classList.add('selected'); 
     } else {
-        // Seat is deselected - remove from the Set
         selectedSeats.delete(seatName);
-        if(seatSpan) seatSpan.classList.remove('selected'); // Remove selected class
+        if(seatSpan) seatSpan.classList.remove('selected'); 
     }
 
-    console.log("Current selected seats:", Array.from(selectedSeats)); // Log current selection
+    console.log("Current selected seats:", Array.from(selectedSeats)); 
 
     
     // This function calculates values and saves to sessionStorage.
@@ -240,7 +233,6 @@ function handleCheckboxChange(event) {
     if(proceedToReservationButton) {
          // Disable if no seats are selected (size is 0)
          proceedToReservationButton.disabled = selectedSeats.size === 0;
-         // Optional: Update disabled class for styling
          if (proceedToReservationButton.disabled) {
              proceedToReservationButton.classList.add('disabled');
          } else {
@@ -250,7 +242,7 @@ function handleCheckboxChange(event) {
 }
 
 
-// --- 9. Function to Calculate and Store Purchase Summary ---
+//Function to Calculate and Store Purchase Summary
 function updatePurchaseSummary() {
     let subtotalAmount = 0;
     const vatRate = 0.10; // Example VAT rate
@@ -287,14 +279,13 @@ function updatePurchaseSummary() {
     } catch (error) {
          console.error("Error saving booking summary to sessionStorage:", error);
          alert("Could not save booking details. Please try again.");
-         // Optionally disable the proceed button if sessionStorage fails
          if(proceedToReservationButton) proceedToReservationButton.disabled = true;
      }
 }
 
 
 
-// --- 10. Function to Handle "Proceed to Reservation Details" Button Click ---
+// Function to Handle "Proceed to Reservation Details" Button Click
 function handleProceedToReservation(event) {
     event.preventDefault();
 
