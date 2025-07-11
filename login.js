@@ -10,7 +10,6 @@ const errorMsgElement = document.getElementById('loginErrorMessage');
 
 
 
-// **ADD REFERENCES TO THE NEW ELEMENTS FOR "FORGOT PASSWORD"**
 const forgotPasswordLink = document.querySelector('.form-options a[href="#"]');     // Gets the 'Forgot Password?' link
 const forgotPasswordSection = document.getElementById('forgotPasswordSection');     // Gets the new hidden div
 const forgotPasswordForm = document.getElementById('forgotPasswordForm');           // Gets the new form
@@ -19,15 +18,14 @@ const resetFeedbackMsgElement = document.getElementById('resetFeedbackMessage');
 const resetErrorMsgElement = document.getElementById('resetErrorMessage');          // Gets the reset error message element
 const backToLoginLink = document.getElementById('backToLoginLink');                 // Gets the 'Back to Login' link
 
-// **ADD EVENT LISTENER FOR THE "FORGOT PASSWORD?" LINK**
-if (forgotPasswordLink && forgotPasswordSection && loginForm) { // Check if elements exist
+// Event listener
+if (forgotPasswordLink && forgotPasswordSection && loginForm) { 
     forgotPasswordLink.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent the link from doing its default navigation
+        event.preventDefault(); 
 
 // Show the forgot password section
- forgotPasswordSection.style.display = 'block'; // Or 'flex', 'grid', etc..
+ forgotPasswordSection.style.display = 'block'; 
 
-// Clear any previous reset messages
     if (resetFeedbackMsgElement) resetFeedbackMsgElement.textContent = '';
     if (resetErrorMsgElement) resetErrorMsgElement.textContent = '';
 
@@ -38,7 +36,7 @@ else {
 }
 
 
-// **ADD EVENT LISTENER FOR THE "BACK TO LOGIN" LINK**
+// event listener - "BACK TO LOGIN" LINK
 if (backToLoginLink && forgotPasswordSection && loginForm) { // Check if elements exist
     backToLoginLink.addEventListener('click', (event) => {
         event.preventDefault(); // Prevent the link from doing its default navigation
