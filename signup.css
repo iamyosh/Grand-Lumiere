@@ -9,18 +9,6 @@
 }
 
 
-/* The large, subtle divider on the right edge of the screen */
-/* body::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-    background: linear-gradient(to bottom, transparent, gold, transparent);
-    opacity: 0.3;
-} */
-
 .outer-signup-wrapper {
     background-image: url('images/login-bg.jpg');
     background-size: cover;
