@@ -67,8 +67,6 @@ if (signupForm) {
             })
             .then(() => {
             console.log("Additional user data saved to Firestore!");
-            // Optional: Redirect the user to a welcome page or dashboard
-            // window.location.href = '/welcome.html'; // Example redirection
             })
             .catch((error) => {
             console.error("Error saving additional user data:", error);
@@ -91,21 +89,12 @@ if (signupForm) {
 
         if (errorMsgElement) {
         errorMsgElement.textContent = `Signup failed: ${errorMessage}`;
-        errorMsgElement.style.color = 'red'; // Optional: make it red
+        errorMsgElement.style.color = 'red';
       }
     // Clear success message if it was there
       if (feedbackMsgElement) feedbackMsgElement.textContent = '';
 
-        // // Optional: Display the error message to the user
-        // if (signupErrorMsg) {
-        //     signupErrorMsg.textContent = `Error: ${errorMessage}`;
-        //     if (signupSuccessMsg) signupSuccessMsg.textContent = ""; // Clear success message
-        // }
-
-        // You can add specific handling based on error codes, e.g.:
-        // if (errorCode === 'auth/email-already-in-use') {
-        //   signupErrorMsg.textContent = 'This email is already in use.';
-        // }
+        
         });
     });
 } else {
