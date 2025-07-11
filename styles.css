@@ -1377,7 +1377,7 @@ body {
   padding: 0.6rem 2.0rem;
   border: none;
   outline: none;
-  border-radius: 10px; /* <- Updated border radius */
+  border-radius: 10px; 
   cursor: pointer;
   text-transform: uppercase;
   background-color: #000;
