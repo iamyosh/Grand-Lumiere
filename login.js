@@ -37,21 +37,18 @@ else {
 
 
 // event listener - "BACK TO LOGIN" LINK
-if (backToLoginLink && forgotPasswordSection && loginForm) { // Check if elements exist
+if (backToLoginLink && forgotPasswordSection && loginForm) { 
     backToLoginLink.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent the link from doing its default navigation
+        event.preventDefault(); 
 
     // Hide the forgot password section
         forgotPasswordSection.style.display = 'none';
 
-    // Show the main login form
-        loginForm.style.display = 'block'; // Or 'flex', 'grid', etc., as it was before
+        loginForm.style.display = 'block'; 
 
-    // Clear any previous reset messages
         if (resetFeedbackMsgElement) resetFeedbackMsgElement.textContent = '';
         if (resetErrorMsgElement) resetErrorMsgElement.textContent = '';
 
-    // Optional: Clear the reset email input
         if (resetEmailInput) resetEmailInput.value = '';
     });
 } 
@@ -61,7 +58,7 @@ else {
 
 
 
-// **ADD EVENT LISTENER FOR THE "SEND RESET EMAIL" FORM SUBMISSION**
+// Event listener - "SEND RESET EMAIL" FORM SUBMISSION
 if (forgotPasswordForm && resetEmailInput) { // Check if form and input exist
     forgotPasswordForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the form from refreshing the page
