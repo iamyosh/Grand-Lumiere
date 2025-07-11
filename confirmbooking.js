@@ -1,8 +1,7 @@
-const db = window.firebaseDb; // The Firestore service instance
-const functions = window.firebaseFunctionsInstance; // The Functions service instance (using the distinct name)
-const httpsCallable = window.firebaseHttpsCallable; // The httpsCallable function
-const doc = window.firebaseDoc; // The doc() function
-const getDoc = window.firebaseGetDoc; // The getDoc() function
+const db = window.firebaseDb; 
+const functions = window.firebaseFunctionsInstance; 
+const httpsCallable = window.firebaseHttpsCallable; 
+const getDoc = window.firebaseGetDoc; 
 
 
 if (!db || !functions || !httpsCallable || !doc || !getDoc) {
@@ -12,21 +11,20 @@ if (!db || !functions || !httpsCallable || !doc || !getDoc) {
 
 // Get references to elements you need to disable/hide if loading fails
     const proceedLink = document.getElementById('proceed-link');
-    if(proceedLink) proceedLink.style.display = 'none'; // Hide or disable button if Firebase fails
+    if(proceedLink) proceedLink.style.display = 'none'; 
     
 // Find all seats and disable them if needed
     document.querySelectorAll('[data-seat-name]').forEach(el => {
          if (el.tagName === 'INPUT') el.disabled = true;
-         else el.style.pointerEvents = 'none'; // Disable clicks
+         else el.style.pointerEvents = 'none'; 
     });
     
 
-// Display an error message on the page itself
     const mainBookingContainer = document.querySelector('.seatbooking-container'); // Get your main seat container
     if (mainBookingContainer) {
-        mainBookingContainer.innerHTML = "<h1>Error: Could not load booking features.</h1>"; // Replace content
+        mainBookingContainer.innerHTML = "<h1>Error: Could not load booking features.</h1>"; 
     }
-     throw new Error("Firebase not loaded correctly."); // This will halt script execution
+     throw new Error("Firebase not loaded correctly."); 
 }
 
 
@@ -34,14 +32,11 @@ if (!db || !functions || !httpsCallable || !doc || !getDoc) {
 // Declare a variable to store the booking summary data once loaded
 let bookingSummary = null;
 
-// --- Get References to HTML elements (Using the IDs you added) ---
-// Get references to the spans where you'll display the summary
 const numTicketsElement = document.getElementById('num-tickets');
 const subtotalAmountElement = document.getElementById('subtotal-amount');
 const vatAmountElement = document.getElementById('vat-amount');
 const totalAmountElement = document.getElementById('total-amount');
 
-// Get references to the input fields for customer details
 const customerNameInput = document.getElementById('customer-name');
 console.log("Customer name input element:", customerNameInput);
 
@@ -51,12 +46,11 @@ console.log("Customer mobile input element:", customerMobileInput);
 const customerEmailInput = document.getElementById('customer-email');
 console.log("Customer email input element:", customerEmailInput);
 
-// Get reference to the final Confirm button
 const finalConfirmButton = document.getElementById('final-confirm-button');
 
-// --- Add Event Listener for the Final Confirm Button ---
+
+//Event Listener - Final Confirm Button
 if (finalConfirmButton) {
-    // We'll define handleFinalBookingConfirmation below
     finalConfirmButton.addEventListener('click', handleFinalBookingConfirmation);
 } else {
      console.error("Final confirm button not found in HTML!");
@@ -64,42 +58,36 @@ if (finalConfirmButton) {
 }
 
 // --- Function to load and display the booking summary ---
-// This function runs when the page loads to get data from sessionStorage
 function loadBookingSummaryAndDisplay() {
     const bookingSummaryString = sessionStorage.getItem('currentBookingSummary');
 
     if (!bookingSummaryString) {
         console.error("No booking summary found in sessionStorage.");
         alert("Booking details not found. Please return to the seat selection page.");
-        // Disable confirm button and potentially redirect
         if (finalConfirmButton) finalConfirmButton.disabled = true;
-        // window.location.href = 'nowshowingm.html'; // Example redirect to movies list
-        return false; // Indicate failure
+        return false; 
     }
 
     try {
-        bookingSummary = JSON.parse(bookingSummaryString); // Store parsed data in the variable
+        bookingSummary = JSON.parse(bookingSummaryString); 
 
         // Display the summary details in the HTML elements
         if (numTicketsElement) numTicketsElement.textContent = bookingSummary.numberOfTickets;
-        // Use toFixed(2) for currency display
         if (subtotalAmountElement) subtotalAmountElement.textContent = bookingSummary.subtotalAmount.toFixed(2);
         if (vatAmountElement) vatAmountElement.textContent = bookingSummary.vatAmount.toFixed(2);
         if (totalAmountElement) totalAmountElement.textContent = bookingSummary.totalAmount.toFixed(2);
 
-        // Optional: Display selected seats or movie details again if you added elements for them
-        // e.g., add a span with id="confirm-selected-seats" in HTML
-        // if (document.getElementById('confirm-selected-seats')) document.getElementById('confirm-selected-seats').textContent = bookingSummary.selectedSeats.join(', ');
+        
+        
 
         console.log("Booking summary loaded:", bookingSummary);
-        return true; // Indicate success
+        return true; 
 
     } catch (error) {
         console.error("Error parsing booking summary from sessionStorage:", error);
         alert("Error loading booking details. Please return to the seat selection page.");
         if (finalConfirmButton) finalConfirmButton.disabled = true;
-        // window.location.href = 'nowshowingm.html'; // Example redirect
-        return false; // Indicate failure
+        return false; 
     }
 }
 
@@ -107,7 +95,7 @@ function loadBookingSummaryAndDisplay() {
 const summaryLoadedSuccessfully = loadBookingSummaryAndDisplay();
 
 // Re-enable the final confirm button after summary loads if it was disabled initially
-if (finalConfirmButton) { // Check if button element was found
+if (finalConfirmButton) { 
     if (summaryLoadedSuccessfully) {
          finalConfirmButton.disabled = false;
     } else {
@@ -117,7 +105,6 @@ if (finalConfirmButton) { // Check if button element was found
 
 
 // --- Function to Handle Final Booking Confirmation Button Click ---
-// This is where we'll call the Cloud Function
 function handleFinalBookingConfirmation() {
-    window.location.href = 'bankdetails.html'; // Redirect to bank details page
+    window.location.href = 'bankdetails.html'; 
 }
