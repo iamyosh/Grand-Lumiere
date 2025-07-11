@@ -14,7 +14,7 @@ const errorMsgElement = document.getElementById('signupErrorMessage');
 const signupErrorMsg = document.getElementById('signupErrorMsg'); 
 const signupSuccessMsg = document.getElementById('signupSuccessMsg'); 
 
-// Check if the form element exists (good practice!)
+// Check if the form element exists
 if (signupForm) {
     signupForm.addEventListener('submit', async(event) => {
     event.preventDefault();
@@ -31,14 +31,13 @@ if (signupForm) {
 
     if (email.length === 0 || password.length === 0) {
         if (signupErrorMsg) signupErrorMsg.textContent = "Please enter email and password.";
-      return; // Stop the function
+      return; 
     }
 
     // Use Firebase Auth to create the user
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-        // Signed up successfully!
-        const user = userCredential.user; // The new user object
+        const user = userCredential.user; 
 
         console.log('User signed up:', user);
 
@@ -46,7 +45,7 @@ if (signupForm) {
 
               if (feedbackMsgElement) {
         feedbackMsgElement.textContent = `Successfully signed up as ${user.email}!`;
-        feedbackMsgElement.style.color = 'green'; // Optional: make it green
+        feedbackMsgElement.style.color = 'green'; 
       }
 
         signupForm.reset(); 
@@ -56,21 +55,20 @@ if (signupForm) {
         // Get the additional data
         const name = nameInput.value;
         const mobile = mobileInput.value;
-        const userId = user.uid; // Get the unique User ID from Authentication
+        const userId = user.uid; 
 
         if (typeof db !== 'undefined') {
-          db.collection('users').doc(userId).set({ // Use the Auth UID as the document ID
+          db.collection('users').doc(userId).set({ 
             name: name,
             mobile: mobile,
-            email: email, // Can store email here too for easier lookup
-            createdAt: firebase.firestore.FieldValue.serverTimestamp() // Optional timestamp
+            email: email, 
+            createdAt: firebase.firestore.FieldValue.serverTimestamp() 
             })
             .then(() => {
             console.log("Additional user data saved to Firestore!");
             })
             .catch((error) => {
             console.error("Error saving additional user data:", error);
-            // Handle errors
             });
         } else {
                 console.warn("Firestore not initialized. Cannot save additional user data.");
