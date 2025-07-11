@@ -101,16 +101,10 @@ if (signupForm) {
     console.error("Signup form element not found!");
 }
 
-// Optional: Add an onAuthStateChanged listener to redirect if already logged in
-// This runs whenever the user's authentication state changes (login, logout)
 auth.onAuthStateChanged((user) => {
     if (user) {
-        // User is signed in.
         console.log('User already logged in on signup page, redirecting...', user);
-        // Optional: Redirect logged-in users away from the signup page
-        // window.location.href = '/dashboard.html'; // Example redirection
     } else {
-        // No user is signed in. Stay on the signup page.
         console.log('No user logged in.');
     }
 });
