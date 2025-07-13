@@ -33,4 +33,4 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
 ![Firebase](https://img.shields.io/badge/Firebase-Backend-ffca28?logo=firebase&logoColor=black)  
 ![Firestore](https://img.shields.io/badge/Cloud%20Firestore-Realtime%20DB-ffa000?logo=firebase)  
 ![Cloud Functions](https://img.shields.io/badge/Cloud%20Functions-Serverless-4285f4?logo=googlecloud&logoColor=white)  
-![BFG Repo-Cleaner](https://img.shields.io/badge/BFG--Repo--Cleaner-Security-black?logo=git)  
+![BFG Repo-Cleaner](https://img.shields.io/badge/BFG--Repo--Cleaner-Security-green?logo=git)  
