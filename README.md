@@ -26,11 +26,11 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
 
  *Tech Stack*
 
-![Figma](https://img.shields.io/badge/Figma-Design-ff4088?logo=figma&logoColor=white)  
-![HTML5](https://img.shields.io/badge/HTML5-Markup-e34c26?logo=html5&logoColor=white)  
-![CSS3](https://img.shields.io/badge/CSS3-Styling-1572B6?logo=css3&logoColor=white)  
-![JavaScript](https://img.shields.io/badge/JavaScript-Logic-F7DF1E?logo=javascript&logoColor=black)  
-![Firebase](https://img.shields.io/badge/Firebase-Backend-ffca28?logo=firebase&logoColor=black)  
-![Firestore](https://img.shields.io/badge/Cloud%20Firestore-Realtime%20DB-ffa000?logo=firebase)  
-![Cloud Functions](https://img.shields.io/badge/Cloud%20Functions-Serverless-4285f4?logo=googlecloud&logoColor=white)  
-![BFG Repo-Cleaner](https://img.shields.io/badge/BFG--Repo--Cleaner-Security-green?logo=git)   
+![Figma](https://img.shields.io/badge/Figma-Design-ff4088?logo=figma&logoColor=white)&nbsp;&nbsp;
+![HTML5](https://img.shields.io/badge/HTML5-Markup-e34c26?logo=html5&logoColor=white)&nbsp;&nbsp;
+![CSS3](https://img.shields.io/badge/CSS3-Styling-1572B6?logo=css3&logoColor=white)&nbsp;&nbsp;
+![JavaScript](https://img.shields.io/badge/JavaScript-Logic-F7DF1E?logo=javascript&logoColor=black)&nbsp;&nbsp;
+![Firebase](https://img.shields.io/badge/Firebase-Backend-ffca28?logo=firebase&logoColor=black)&nbsp;&nbsp;
+![Firestore](https://img.shields.io/badge/Cloud%20Firestore-Realtime%20DB-ffa000?logo=firebase)&nbsp;&nbsp;
+![Cloud Functions](https://img.shields.io/badge/Cloud%20Functions-Serverless-4285f4?logo=googlecloud&logoColor=white)&nbsp;&nbsp;
+![BFG Repo-Cleaner](https://img.shields.io/badge/BFG--Repo--Cleaner-Security-black?logo=git)
