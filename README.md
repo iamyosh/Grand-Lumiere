@@ -23,7 +23,7 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
  *Tech Stack*
 
 1. UI Design
-- [Figma](https://figma.com/) – for prototyping and interface design
+- Figma
 
 2. Frontend
 - HTML
