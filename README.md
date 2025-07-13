@@ -26,19 +26,19 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
 
  *Tech Stack*
 
-1. UI Design
+**1. UI Design**
 - Figma
 
-2. Frontend
+**2. Frontend**
 - HTML
 - CSS
 - JavaScript
 
-3. Backend
+**3. Backend**
 - Firebase:
   - Firebase Authentication
   - Cloud Firestore (NoSQL Database)
   - Cloud Functions (serverless backend written in JS)
 
-4. Security & Git Hygiene
+**4. Security & Git Hygiene**
 - BFG Repo-Cleaner – used to scrub sensitive data from repository history before pushing to GitHub
