@@ -1,20 +1,17 @@
 🌟 **Grand Lumière — A Modern Movie Booking Website**
 
 Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app built using modern web technologies. Designed with elegance, speed, and usability in mind, this full-stack project merges clean design with powerful Firebase backend services.
-
-
+<br>
+<br>
 
 🎥 *Live Demo & Screenshots*
 
 📽️ [Watch Demo Video](#)
 
-📷 [View full Figma Design]
-
+📷 [View full Figma Design]<n>
 (https://www.figma.com/design/9h5xbuTLIzwic5aIvatPYf/Grand-Lumiere--Copy-?node-id=0-1&t=ju0l3991XD3aarXN-1)
 
-
-
-
+<br>
 
 ✨ *Features*
 
