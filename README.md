@@ -3,16 +3,16 @@
 Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app built using modern web technologies. Designed with elegance, speed, and usability in mind, this full-stack project merges clean design with powerful Firebase backend services.
 <br>
 <br>
-
+<br>
 🎥 *Live Demo & Screenshots*
 
 📽️ [Watch Demo Video](#)
 
-📷 [View full Figma Design]<n>
+📷 [View full Figma Design]<br>
 (https://www.figma.com/design/9h5xbuTLIzwic5aIvatPYf/Grand-Lumiere--Copy-?node-id=0-1&t=ju0l3991XD3aarXN-1)
 
 <br>
-
+<br>
 ✨ *Features*
 
 01. Modern, responsive UI/UX — built with Figma
@@ -21,9 +21,8 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
 04. Real-time movie listings and dynamic seat selection  
 05. Backend logic handled with Firebase Cloud Functions  
 06. Used BFG Repo-Cleaner to ensure sensitive data is wiped from Git history  
-
-
-
+<br>
+<br>
 
 🛠 *Tech Stack*
 
