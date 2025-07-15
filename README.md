@@ -4,7 +4,7 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
 
 
 
-*Live Demo & Screenshots*
+🎥*Live Demo & Screenshots*
 
 📽️ [Watch Demo Video](#)  
 📷 [See Figma UI Screenshots](#)
