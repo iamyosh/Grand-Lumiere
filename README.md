@@ -24,7 +24,7 @@ Welcome to Grand Lumière, a sleek and responsive movie ticket booking web app b
 
 
 
- *Tech Stack*
+🛠 *Tech Stack*
 
 ![Figma](https://img.shields.io/badge/Figma-Design-ff4088?logo=figma&logoColor=white)&nbsp;&nbsp;
 ![HTML5](https://img.shields.io/badge/HTML5-Markup-e34c26?logo=html5&logoColor=white)&nbsp;&nbsp;
